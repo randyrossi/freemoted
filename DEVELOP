@@ -1,0 +1,64 @@
+
+Unix/Cygwin
+===========
+
+Nothing extra required.  Just need libtool, autogen and autoconf. Configure
+and make.  Generated binary is left in src directory.
+
+Windows Visual Studio
+=====================
+
+config.h should have this:
+
+#define HAVE_WIN32
+#define HAVE_VSTUDIO
+#define SYSCONFDIR .
+
+Also, you have to add
+
+    ws2_32.lib
+
+to
+
+    Properties/Configuration Properties/Linker/Input/Additional Dependencies
+
+Also, do not use precompiled headers:
+
+1. In the Solution Explorer pane of the project, right-click the project name, and then click Properties.
+2. In the left pane, click the C/C++ folder.
+3. Click the Precompiled Headers node.
+4. In the right pane, click Create/Use Precompiled Header, and then click Not Using Precompiled Headers.
+
+
+Visual Studio 2010 project and solution files are included.  There is no
+command line version of freemoted.exe anymore.  It is now a windows app
+that minimizes to the system tray.
+
+Mac OSX
+=======
+
+config.h should have this:
+
+#define HAVE_MACOSX
+#define SYSCONFDIR /etc
+
+The x-code project is included.  Open it using xcode and build.  The generated
+binaries will show up in the build directory in src.
+
+NSIS Installer Script
+=====================
+
+setup.nsi can be used to create a setup.exe installation program for
+the Win32 version.  Script currently expects the source files to be
+located at c:\Freemote_Install_Files.  Example:
+
+c:\Freemote_Install_Files
+    freemote.ico
+    freemoted.conf
+    freemoted.exe
+
+
+splash.ufo
+==========
+
+File for PhotoImpact to create splash.bmp requird by NSIS installer.

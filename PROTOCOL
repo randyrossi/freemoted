@@ -1,0 +1,196 @@
+CONNECTION
+----------
+
+    When a client connects to freemoted, the server responds with
+    capabilities, version and screen size information.  Each line is terminated
+    with a newline character '\n'.  The client should keep reading lines
+    until '# ' is read (hash + space).
+
+    cap:m,x,s,l,k,
+    ver:2
+    scr:800 600
+    chk:800 600
+    #
+
+Capability Flags
+----------------
+
+    cap:[m,x,s,l,k]
+
+    The capability flags are as follows:
+
+	m = Myth Front End Protocol is configured
+	x = XWindows keyboard/mouse press/movement is configured 
+	w = MS Windows keyboard/mouse press/movement is configured
+	s = screen capture is supported
+	l = LIRC simulated events is configured
+	k = The 'kyb' command is accepted by this server (see below)
+
+Protocol Version
+----------------
+
+    ver:<integer>\n
+
+Screen Size
+-----------
+
+    scr:<width> <height>\n
+
+    This tells the client the desktop screen size.  It is only reported if
+    screen capture function is available.
+
+Chunk Size
+----------
+
+    chk:<width> <height>\n
+
+    The meaning of this information is described below in the 'ss' command
+    section.
+
+COMMANDS
+--------
+
+btn <string>\n
+
+    Presses the button indicated by <string>.  Freemoted will consult the
+    freemoted.conf file to determine which control method to use.
+
+    where <string> is one of:
+
+	ok back up down left right chanup chandown info picture wide
+	menu power volup voldown volmute togfav nextfav prevchan comskipf
+	comskipb pip focuspip btn swappip btn pause btn playf btn playb btn
+	speedup speeddown skipf skipb seekf seekb record
+	0 1 2 3 4 5 6 7 8 9
+
+    Expected Response: OK\n#<space>
+
+kyd <key string>\n
+
+    Simulate a key press event
+
+    Expected Response: OK\n#<space>
+
+kyu <key string>\n
+
+    Simulate a key release event.
+
+    Expected Response: OK\n#<space>
+
+kyb <key string>\n
+
+    Simulate a key press and release event.
+
+    <key string> can be any printable ascii character or one of:
+
+    enter backspace tab space escape up down left right
+    alt shift cntrl F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12
+    del pageup pagedown
+
+    Expected Response: OK\n#<space>
+
+mm dx,dy\n
+
+    Move the mouse pointer by dx,dy pixels.
+
+    Expected Response: None, the client does not have to read a response before
+    sending the next mouse movement command.
+
+mp dx,dy\n
+
+    Move the mouse pointer by dx,dy pixels and report back what the current
+    location is.
+
+    Expected Response: x y\n
+
+mb <button#>,0|1\n
+
+    Press the mouse button.
+
+    button
+	1 left
+	2 middle
+	3 right
+	4 wheel up (XWindows Only)
+	5 wheel down (XWindows Only)
+
+    0 = up
+    1 = down
+
+    Expected Response: OK\n#<space>
+
+ss <mode> <quality> <reserved>\n
+
+    Request a screen capture in JPG format.
+
+    where mode is 0 for FULL, 1 for DELTA
+
+       FULL : Full
+
+       DELTA : A number of images representing only the changed portions of the screen is returned.
+
+    <quality> is 10-100.
+
+    Expected Response:
+
+    <num images client should expect>\n
+(repeat the following for each image)
+    <image num>\n
+    <num bytes> <top> <left> <width> <height> <chunk index>\n
+
+    NOTE: top,left parameters are relative to the top,left coordinate
+    dictated by the chunk index.
+
+    Some smartphones are not capable of holding the entire desktop screen
+    as one image in memory at one time.  To work around this limitation,
+    freemoted will 'chunk' the desktop into pieces until the entire desktop
+    is covered.
+
+    In the case the desktop is larger than the chunk size, the client must
+    interpret the responses within the context of a grid of 'tiles'.  The tiles
+    start in the top left corner and are layed out from left to right until
+    a row is covered, after which a new row is started from the very left
+    (like English text in a book).
+
+    For example, if my desktop was 1024 x 768, and the chunk size is reported
+    as 800 x 600, the client would expect a 4x4 grid of images to be returned.
+
+    chunk index 0  800x600 at location (0,0)
+    chunk index 1  224x600 at location (800,0)
+    chunk index 2  800x168 at location (0,600)
+    chunk index 3  224x168 at location (800,600)
+
+    It is up to the client to 'stitch' the returned images back together into
+    one image representing the desktop area.
+
+play <id>\n
+
+    Play a recording on MythTV.  This string is passed directly to Myth's
+    front end control socket.
+
+query liveTV\n
+
+    List what's on MythTV's program schedule right now.  This string is
+    passed directly to Myth's front end control socket.
+
+query recordings\n
+
+    List recordings on MythTV.  This string is passed directly to Myth's
+    front end control socket.
+
+stat\n
+
+    Report some information on the current connections.
+
+    Expected Response: A list of connection ids.
+
+    conId <#>\n
+    conId <#>\n
+    conId <#>\n
+    OK\n
+    #<space>
+
+quit\n
+
+    Close the connection.
+

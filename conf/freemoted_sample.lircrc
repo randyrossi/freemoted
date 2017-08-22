@@ -1,0 +1,694 @@
+#
+# MythTV sample LIRC config file for Freemote
+#
+# This file is usually named $HOME/.mythtv/lircrc but depends on
+# your lirc setup.
+#
+# Configured Applications: MythTV, mplayer, xine
+#
+
+begin
+prog = mythtv
+button = Vol+
+repeat = 2
+config = F11
+end
+
+begin
+prog = mythtv
+button = Vol-
+repeat = 2
+config = F10
+end
+
+begin
+prog = mythtv
+button = TogFav
+repeat = 2
+config = ?
+end
+
+begin
+prog = mythtv
+button = NextFav
+repeat = 2
+config = /
+end
+
+begin
+prog = mythtv
+button = SkipComForward
+repeat = 2
+config = Z
+end
+
+begin
+prog = mythtv
+button = SkipComBackward
+repeat = 2
+config = Q
+end
+
+begin
+prog = mythtv
+button = Pip
+repeat = 2
+config = V
+end
+
+begin
+prog = mythtv
+button = FocusPip
+repeat = 2
+config = B
+end
+
+begin
+prog = mythtv
+button = PipSwap
+repeat = 2
+config = N
+end
+
+#
+# NOTE
+#
+# For Jump buttons to work, you'll need to configure
+# the proper keystrokes using mythweb or direct
+# sql to database
+#
+
+begin
+prog = mythtv
+button = JumpMain
+repeat = 2
+config = Alt+F1
+end
+
+begin
+prog = mythtv
+button = JumpGuide
+repeat = 2
+config = Alt+F2
+end
+
+begin
+prog = mythtv
+button = JumpTV
+repeat = 2
+config = Alt+F3
+end
+
+begin
+prog = mythtv
+button = JumpMusic
+repeat = 2
+config = Alt+F4
+end
+
+begin
+prog = mythtv
+button = JumpVideo
+repeat = 2
+config = Alt+F5
+end
+
+begin
+prog = mythtv
+button = JumpGames
+repeat = 2
+config = Alt+F6
+end
+
+begin
+prog = mythtv
+button = JumpWeather
+repeat = 2
+config = Alt+F7
+end
+
+begin
+prog = mythtv
+button = JumpFix
+repeat = 2
+config = Alt+F8
+end
+
+begin
+prog = mythtv
+button = JumpPictures
+repeat = 2
+config = Alt+F9
+end
+
+begin
+prog = mythtv
+button = Menu
+repeat = 2
+config = M
+end
+
+begin
+prog = mythtv
+button = Up
+repeat = 2
+config = Up
+end
+
+begin
+prog = mythtv
+button = Down
+repeat = 2
+config = Down
+end
+
+begin
+prog = mythtv
+button = Left
+repeat = 2
+config = Left
+end
+
+begin
+prog = mythtv
+button = Right
+repeat = 2
+config = Right
+end
+
+begin
+prog = mythtv
+button = Ok
+config = Space
+end
+
+begin
+prog = mythtv
+button = Wide
+config = W
+end
+
+begin
+prog = mythtv
+button = Play
+config = Return
+end
+
+begin
+prog = mythtv
+button = Stop
+config = Return
+end
+
+begin
+prog = mythtv
+button = Back/Exit
+config = Esc
+end
+
+begin
+prog = mythtv
+button = Power
+config = Alt+Escape
+end
+
+begin
+prog = mythtv
+button = Pause
+repeat = 2
+config = P
+end
+
+begin
+prog = mythtv
+button = Mute
+repeat = 2
+config = |
+end
+
+begin
+prog = mythtv
+button = SeekBackward
+repeat = 2
+config = <
+end
+
+begin
+prog = mythtv
+button = SeekForward
+repeat = 2
+config = >
+end
+
+begin
+prog = mythtv
+button = Skip
+repeat = 2
+config = PgDown
+end
+
+begin
+prog = mythtv
+button = Replay
+repeat = 2
+config = PgUp
+end
+
+begin
+prog = mythtv
+button = Record
+repeat = 2
+config = R
+end
+
+begin
+prog = mythtv
+button = Info
+repeat = 2
+config = I
+end
+
+begin
+prog = mythtv
+button = Ch+
+repeat = 2
+config = PgUp
+end
+
+begin
+prog = mythtv
+button = Ch-
+repeat = 2
+config = PgDown
+end
+
+begin
+prog = mythtv
+button = PrevChannel
+repeat = 2
+config = H
+end
+
+begin
+prog = mythtv
+button = #
+repeat = 2
+config = T
+end
+
+# Numbers 0-9
+
+begin
+prog = mythtv
+button = 0
+repeat = 2
+config = 0
+end
+
+begin
+prog = mythtv
+button = 1
+repeat = 2
+config = 1
+end
+
+begin
+prog = mythtv
+button = 2
+repeat = 2
+config = 2
+end
+
+begin
+prog = mythtv
+button = 3
+repeat = 2
+config = 3
+end
+
+begin
+prog = mythtv
+button = 4
+repeat = 2
+config = 4
+end
+
+begin
+prog = mythtv
+button = 5
+repeat = 2
+config = 5
+end
+
+begin
+prog = mythtv
+button = 6
+repeat = 2
+config = 6
+end
+
+begin
+prog = mythtv
+button = 7
+repeat = 2
+config = 7
+end
+
+begin
+prog = mythtv
+button = 8
+repeat = 2
+config = 8
+end
+
+begin
+prog = mythtv
+button = 9
+repeat = 2
+config = 9
+end
+
+begin
+prog = mythtv
+button = VOL-
+repeat = 2
+config = [
+end
+
+begin
+prog = mythtv
+button = VOL+
+repeat = 2
+config = ]
+end
+
+################################################
+# MPlayer 
+################################################
+
+begin
+prog = mplayer
+button = Vol+
+repeat = 2
+config = volume 10
+end
+
+begin
+prog = mplayer
+button = Vol-
+repeat = 2
+config = volume -10
+end
+
+begin
+prog = mplayer
+button = Ch+
+repeat = 2
+config = audio_delay 0.100
+end
+
+begin
+prog = mplayer
+button = Ch-
+repeat = 2
+config = audio_delay -0.100
+end
+
+begin
+prog = mplayer
+button = Info
+repeat = 2
+config = osd
+end
+
+begin
+prog = mplayer
+button = Pause
+repeat = 2
+config = pause
+end
+
+begin
+prog = mplayer
+button = Play
+repeat = 2
+config = seek +1
+end
+
+begin
+prog = mplayer
+button = Stop
+repeat = 2
+config = quit
+end
+
+begin
+prog = mplayer
+button = Power
+repeat = 2
+config = quit
+end
+
+begin
+prog = mplayer
+button = Mute
+repeat = 2
+config = mute
+end
+
+begin
+prog = mplayer
+button = SeekBackward
+repeat = 2
+config = seek -10
+end
+
+begin
+prog = mplayer
+button = SeekForward
+repeat = 2
+config = seek +30
+end
+
+begin
+prog = mplayer
+button = Back/Exit
+repeat = 2
+config = quit
+end
+
+begin
+prog = mplayer
+button = Skip
+repeat = 2
+config = seek +600
+end
+
+begin
+prog = mplayer
+button = Replay
+repeat = 2
+config = seek -600
+end
+
+begin
+prog = mplayer
+button = Wide
+repeat = 2
+config = vo_fullscreen
+end
+
+begin
+prog = mplayer
+button = Up
+repeat = 2
+config = seek 600
+end
+
+begin
+prog = mplayer
+button = Down
+repeat = 2
+config = seek -600
+end
+
+begin
+prog = mplayer
+button = Left
+repeat = 2
+config = seek -60
+end
+
+begin
+prog = mplayer
+button = Right
+repeat = 2
+config = seek 60
+end
+
+
+
+################################################
+# Xine 
+################################################
+
+begin
+prog = xine
+button = Play
+repeat = 2
+config = Play
+end
+
+begin
+prog = xine
+button = Stop
+repeat = 2
+config = Stop
+end
+
+begin
+prog = xine
+button = Power
+repeat = 2
+config = Quit
+end
+
+begin
+prog = xine
+button = Pause
+repeat = 2
+config = Pause
+end
+
+begin
+prog = xine
+button = Up
+repeat = 2
+config = EventUp
+end
+
+begin
+prog = xine
+button = Down
+repeat = 2
+config = EventDown
+end
+
+begin
+prog = xine
+button = Left
+repeat = 2
+config = EventLeft
+end
+
+begin
+prog = xine
+button = Right
+repeat = 2
+config = EventRight
+end
+
+begin
+prog = xine
+button = Ok
+repeat = 2
+config = EventSelect
+end
+
+begin
+prog = xine
+button = Menu
+repeat = 2
+config = Menu
+end
+
+begin
+prog = xine
+button = SeekForward
+repeat = 2
+config = SeekRelative+60
+end
+
+begin
+prog = xine
+button = SeekBackward
+repeat = 2
+config = SeekRelative-60
+end
+
+begin
+prog = xine
+button = Vol+
+repeat = 2
+config = Volume+
+end
+
+begin
+prog = xine
+button = Vol-
+repeat = 2
+config = Volume-
+end
+
+begin
+prog = xine
+button = Mute
+repeat = 2
+config = Mute
+end
+
+begin
+prog = xine
+button = Info
+repeat = 2
+config = RootMenu
+end
+
+begin
+prog = xine
+button = Skip
+repeat = 2
+config = EventNext
+end
+
+begin
+prog = xine
+button = Replay
+repeat = 2
+config = EventPrior
+end
+
+begin
+prog = xine
+button = Info
+repeat = 2
+config = OSDStreamInfos
+end
+
+begin
+prog = xine
+button = Back/Exit
+repeat = 2
+config = Quit
+end
+
+begin
+prog = xine
+button = Power
+repeat = 2
+config = Quit
+end
+
+begin
+prog = xine
+button = #
+repeat = 2
+config = >
+end
+
+begin
+prog = xine
+button = *
+repeat = 2
+config = <
+end

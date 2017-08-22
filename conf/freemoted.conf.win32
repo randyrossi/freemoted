@@ -1,0 +1,196 @@
+# ------------------------------------------------------------------------
+# Special thanks to J.T. Cornish for putting this Windows Media Center
+# version together.
+#
+# This file is part of Freemote Control Proxy.
+#
+# Freemote Control Proxy is free software: you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Freemote Control Proxy is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Freemote Control Proxy.  If not, see
+# <http://www.gnu.org/licenses/>.
+#
+# ------------------------------------------------------------------------
+#
+# The service a button command maps to depends on what services are
+# made available to the remote control proxy when it is started.
+# You can specify your preference order here for buttons.
+#
+# Format is: btn <id>,route1,route2,route3...
+#
+# where routeN is one of:
+#
+#  : key(sequence1|sequence2|...) - use XWindows/Windows keys
+#
+#       where sequence is of the form:
+#
+#           key1+key2+key3...
+#
+#       In addition to characters, you may use these special key strings:
+#
+#           alt    cntrl   shift      space 
+#           escape tab     backspace  escape
+#           up     down    left       right
+#
+#  : lirc(string) - use simulated lirc command
+#
+#       where string matches the strings expected in your lircrc file
+#
+#  : myth(string) - use myth control socket
+#
+#       where string is a valid mythfrontend control socket command
+#
+#  : shell(string &) - execute a command using /bin/sh
+#
+#       You must have '&' character at the end so the command will be
+#       executed in the background.  Otherwise, the remote will freeze
+#       until the child process terminates.
+#
+btn ok,key(enter),lirc(Ok),myth(key enter)
+btn back,key(backspace),lirc(Back/Exit),myth(key escape)
+btn up,key(up),lirc(Up),myth(key up)
+btn down,key(down),lirc(Down),myth(key down)
+btn left,key(left),lirc(left),myth(key left)
+btn right,key(right),lirc(right),myth(key right)
+btn chanup,lirc(Ch+),key(PageUp),myth(play channel up)
+btn chandown,lirc(Ch-),key(PageDown),myth(play channel down)
+btn info,lirc(Info),key(Cntrl+D),myth(key i)
+btn picture,lirc(PictureAdjust),key(),myth(key G)
+btn wide,lirc(Wide),key(Cntrl+Shift+Z),myth(key W)
+btn menu,lirc(Menu),key(Win+Alt+Enter),myth(key M)
+btn power,lirc(Power),key(Alt+F4),myth(key enter)
+btn volup,lirc(Vol+),key(f10),myth(key f11)
+btn voldown,lirc(Vol-),key(f9),myth(key f10)
+btn volmute,lirc(Mute),key(f8),myth(key f9)
+btn togfav,lirc(TogFav),key(),myth(key ?)
+btn nextfav,lirc(NextFav),key(),myth(key /)
+btn prevchan,lirc(PrevChannel),key(),myth(key H)
+btn comskipf,lirc(SkipComForward),key(),myth(key Z)
+btn comskipb,lirc(SkipComBackward),key(),myth(key Q)
+btn pip,lirc(Pip),key(),myth(key V)
+btn focuspip,lirc(FocusPip),key(),myth(key B)
+btn swappip,lirc(PipSwap),key(),myth(key N)
+btn pause,lirc(Pause),key(Cntrl+P),myth(key P)
+btn playf,lirc(Play),key(Cntrl+Shift+P),myth(key P)
+btn playb,lirc(Rewind),key(),myth(key P)
+btn speedup,lirc(SpeedUp),key(Cntrl+Shift+F),myth(key U)
+btn speeddown,lirc(SpeedDown),key(Cntrl+Shift+B),myth(key J)
+btn skipf,lirc(Skip),key(Cntrl+F),myth(key pagedown)
+btn skipb,lirc(Replay),key(Cntrl+B),myth(key pageup)
+btn seekf,lirc(SeekForward),key(Cntrl+Shift+f),myth(key right)
+btn seekb,lirc(SeekBackward),key(Cntrl+Shift+b),myth(key left)
+btn record,lirc(Record),key(Cntrl+R),myth(key r)
+btn 0,lirc(0),key(0),myth(key 0)
+btn 1,lirc(1),key(1),myth(key 1)
+btn 2,lirc(2),key(2),myth(key 2)
+btn 3,lirc(3),key(3),myth(key 3)
+btn 4,lirc(4),key(4),myth(key 4)
+btn 5,lirc(5),key(5),myth(key 5)
+btn 6,lirc(6),key(6),myth(key 6)
+btn 7,lirc(7),key(7),myth(key 7)
+btn 8,lirc(8),key(8),myth(key 8)
+btn 9,lirc(9),key(9),myth(key 9)
+btn enter,key(enter),lirc(Ok),myth(key enter)
+btn tab,lirc(Tab),key(tab),myth(key tab)
+btn backtab,lirc(Backtab),key(shift+tab),myth(key backtab)
+#
+# Note: By default, jump keyboard shortcuts are not setup in myth
+# Use mythweb or change your database to setup jump points if you
+# are using X or lirc for these and change the ordering here.
+#
+btn jmpmain,myth(jump mainmenu),key(Win+Alt+Enter),lirc(JumpMain)
+btn jmpguide,myth(jump programguide),key(Cntrl+G),lirc(JumpGuide)
+btn jmptv,myth(jump livetv),key(Cntrl+T),lirc(JumpTV)
+btn jmpmusic,myth(jump playmusic),key(Cntrl+M),lirc(JumpMusic)
+btn jmpvideo,myth(jump mythvideo),key(Cntrl+E),lirc(JumpVideo)
+btn jmpgames,myth(jump mythgames),key(),lirc(JumpGames)
+btn jmpweather,myth(jump mythweather),key(),lirc(JumpWeather)
+btn jmpfix,myth(jump managerecordings),key(Cntrl+O),lirc(JumpFix)
+btn jmppictures,myth(jump mythgallery),key(Cntrl+L),lirc(JumpPictures)
+btn browser,shell()
+btn terminal,shell(start cmd)
+btn customup,shell(start cmd /k echo **** Please edit freemoted.conf ***)
+btn customdown,shell(start cmd /k echo **** Please edit freemoted.conf ***)
+btn custom1,shell(start cmd /k echo **** Please edit freemoted.conf ***)
+btn custom2,shell(start cmd /k echo **** Please edit freemoted.conf ***)
+btn custom3,shell(start cmd /k echo **** Please edit freemoted.conf ***)
+btn custom4,shell(start cmd /k echo **** Please edit freemoted.conf ***)
+#
+# Freemoted needs to know how to make certain characters using your keyboard
+# layout.  US style keyboard rules are provided but you may need to modify 
+# these to match your keyboard's layout.  If the method of obtaining the
+# symbol does not involve using the shift key, you may use these keywords
+# instead:
+#
+#	enter backspace tab space escape up down left right
+#	alt shift cntrl
+#	F1 F2 F3 F4 F5 F6 F7 F8
+#	F9 F10 F11 F12
+#	home end apostrophe comma minus period slash semicolon
+#	backslash grave del pageup pagedown numbersign dollar
+#	percent ampersand asterisk plus colon less greater question
+#	at bracketleft backslash bracketright asciicircum underscore
+#	parenleft parenright braceleft braceright bar asciitilde
+#	exclamdown brokenbar
+#
+#	NOTE: These keywords represent the key that can produce the
+#	symbol, not the symbol itself. So you may have to combine it 
+#	with shift key using 'shift+'
+#
+#	eg. kyb + shift+plus
+#
+kyb A shift+a
+kyb B shift+b
+kyb C shift+c
+kyb D shift+d
+kyb E shift+e
+kyb F shift+f
+kyb G shift+g
+kyb H shift+h
+kyb I shift+i
+kyb J shift+j
+kyb K shift+k
+kyb L shift+l
+kyb M shift+m
+kyb N shift+n
+kyb O shift+o
+kyb P shift+p
+kyb Q shift+q
+kyb R shift+r
+kyb S shift+s
+kyb T shift+t
+kyb U shift+u
+kyb V shift+v
+kyb W shift+w
+kyb X shift+x
+kyb Y shift+y
+kyb Z shift+z
+kyb ~ shift+`
+kyb ! shift+1
+kyb @ shift+2
+kyb # shift+3
+kyb $ shift+4
+kyb % shift+5
+kyb ^ shift+6
+kyb & shift+7
+kyb * shift+8
+kyb ( shift+9
+kyb ) shift+0
+kyb _ shift+-
+kyb + shift+=
+kyb { shift+[
+kyb } shift+]
+kyb : shift+;
+kyb " shift+'
+kyb | shift+\
+kyb < shift+,
+kyb > shift+.
+kyb ? shift+/

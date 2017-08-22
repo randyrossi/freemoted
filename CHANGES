@@ -1,0 +1,28 @@
+1.00 	- more stability fixes, wasn't closing X connection, threads were
+	  not joined properly, added quit and stat commands
+
+.99	- stability fixes
+
+.95
+	- added remote viewing capabilities to protocol (X windows only)
+
+.94
+	- minor bug fixes
+
+.93
+	- handled connections on separate thread so other incoming connections
+	  will boot existing one out (if previous connection didn't close
+	  properly, next attempt from client would fail and restart was
+	  required)
+	- used select() to see if there is data before reading, making
+	  graceful shutdown possible (no way to wake up a blocked thread)
+	- added mouse wheel up/down for both xwindows and w32api
+
+.92
+	- set TCP_NODELAY on incomming tcp connection
+	- fixed segfault if mythfrontend was not available at startup
+	- skip/replay buttons not mapped properly
+
+.9 beta
+	- initial release
+

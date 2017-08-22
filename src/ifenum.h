@@ -1,0 +1,1 @@
+int ifenum(char *destIPs[]);
